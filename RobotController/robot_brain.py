@@ -31,6 +31,7 @@ class RobotBrain:
         self.robot_name = config_options['robot_name']
         self.TIME_CHECK_TIMEOUT = config_options['evaluation_time']
         self.LIGHT_THRESHOLD = config_options['light_mating_threshold']
+        self._offline = config_options['disable_learning']
 
         self._next_check = time.time() + self.TIME_CHECK_TIMEOUT
         self._start_time = time.time()
@@ -57,21 +58,20 @@ class RobotBrain:
         self.HAL.step(_outputs)
 #        logging.info("output: {}".format(_outputs))
 
-        # if 30 seconds passed from last check:
-        self._check_next_evaluation()
+        # check if new evaluation is needed and if so, change it
+        if not self._offline:
+            self._check_next_evaluation()
+
+        # check mating conditions
+        self._check_mating_conditions()
 
     def _check_next_evaluation(self, force=False):
         """
         Check if is a moment for a new evaluation and starts a new one
         :param force: forces the new evaluation to start
         """
-        if self.mating_client and self.mating_client.availability:
-            self.mating_client.server.join()
-            self.mating_client.client.join()
-            self.mating_client = None
 
         current_check = time.time()
-        light_level = 1 + (self.HAL.sensor.readADC(0) / -255)
         if force or current_check > self._next_check:
             self.HAL.led.setColor(self.HAL.led._magenta)
             logging.info("Next movement values current {}, next {}"
@@ -84,6 +84,13 @@ class RobotBrain:
                     1 + (self.HAL.sensor.readADC(0) / -255))  # 255-0 to 0-1
             self._next_check = current_check + self.TIME_CHECK_TIMEOUT
 
+    def _check_mating_conditions(self):
+        if self.mating_client and self.mating_client.availability:
+            self.mating_client.server.join()
+            self.mating_client.client.join()
+            self.mating_client = None
+
+        light_level = 1 + (self.HAL.sensor.readADC(0) / -255)
         if light_level < self.LIGHT_THRESHOLD:
             self.HAL.led.setColor(self.HAL.led._green)
         else:
