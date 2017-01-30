@@ -1,0 +1,21 @@
+0 CoreComponent E0 0 BLUE
+	0 ActiveHinge I0 1 BLUE
+		0 FixedBrick F0 0 BLUE
+			0 ActiveHinge I1 0 BLUE
+				0 FixedBrick F1 0 BLUE
+					0 ActiveHinge I2 1 BLUE
+						0 FixedBrick F2 0 BLUE
+	1 ActiveHinge I3 1 YELLOW
+		0 FixedBrick F3 0 YELLOW
+	2 ActiveHinge I4 0 BLUE
+		0 FixedBrick F4 0 BLUE
+			0 ActiveHinge I5 0 BLUE
+				0 FixedBrick F5 0 BLUE
+					0 ActiveHinge I6 1 BLUE
+						0 FixedBrick F6 0 BLUE
+	3 ActiveHinge I7 0 BLUE
+		0 FixedBrick F7 0 BLUE
+			0 ActiveHinge I8 0 BLUE
+				0 FixedBrick F8 0 BLUE
+					0 ActiveHinge I9 1 BLUE
+						0 FixedBrick F9 0 BLUE

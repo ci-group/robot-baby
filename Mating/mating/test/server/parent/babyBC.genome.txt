@@ -1,0 +1,21 @@
+0 CoreComponent P0E0 0 BLUE
+	0 ActiveHinge P0I0 1 BLUE
+		0 FixedBrick P0F0 0 BLUE
+			0 ActiveHinge P0I1 0 BLUE
+				0 FixedBrick P0F1 0 BLUE
+					0 ActiveHinge P0I2 1 BLUE
+						0 FixedBrick P0F2 0 BLUE
+	1 ActiveHinge P0I3 1 YELLOW
+		0 FixedBrick P0F3 0 YELLOW
+	2 ActiveHinge P0I4 0 BLUE
+		0 FixedBrick P1F11 0 GREEN
+			0 ActiveHinge P1I12 1 GREEN
+				0 FixedBrick P1F12 0 GREEN
+	3 ActiveHinge P0I7 0 BLUE
+		0 FixedBrick P0F7 0 BLUE
+			0 ActiveHinge P0I8 0 BLUE
+				0 FixedBrick P0F8 0 BLUE
+					0 ActiveHinge P0I9 1 BLUE
+						0 FixedBrick P0F9 0 BLUE
+
+
